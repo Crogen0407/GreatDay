@@ -17,14 +17,19 @@ namespace GreatDay
 		{
 			InitializeComponent();
 			DayLabel.Text = dayStr;
-			TodoList.Items.Add("팔굽혀펴기 300개");
+			TodoList.Items.Add(isToday);
 			if (isToday)
-				this.BackColor = Color.Red;
+				this.BackColor = Color.LightYellow;
 			TodoList.BackColor = this.BackColor;
 		}
 
 		private void DateItem_Load(object sender, EventArgs e)
 		{
+		}
+
+		public void AddItem(string str)
+		{
+			TodoList.Items.Add(str);
 		}
 	}
 }

@@ -21,7 +21,9 @@ namespace GreatDay
 		private Label label6;
 		private Label label7;
 		private Label label8;
-		private Label label2;
+		private Button button1;
+		private Button button2;
+		private Label NowDateLabel;
 
 		public GreatDay()
 		{
@@ -31,7 +33,7 @@ namespace GreatDay
 		private void InitializeComponent()
 		{
 			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(GreatDay));
-			this.label2 = new System.Windows.Forms.Label();
+			this.NowDateLabel = new System.Windows.Forms.Label();
 			this.daycontainer = new System.Windows.Forms.FlowLayoutPanel();
 			this.label1 = new System.Windows.Forms.Label();
 			this.label3 = new System.Windows.Forms.Label();
@@ -40,17 +42,19 @@ namespace GreatDay
 			this.label6 = new System.Windows.Forms.Label();
 			this.label7 = new System.Windows.Forms.Label();
 			this.label8 = new System.Windows.Forms.Label();
+			this.button1 = new System.Windows.Forms.Button();
+			this.button2 = new System.Windows.Forms.Button();
 			this.SuspendLayout();
 			// 
-			// label2
+			// NowDateLabel
 			// 
-			this.label2.Font = new System.Drawing.Font("배달의민족 주아", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-			this.label2.Location = new System.Drawing.Point(12, 9);
-			this.label2.Name = "label2";
-			this.label2.Size = new System.Drawing.Size(971, 14);
-			this.label2.TabIndex = 2;
-			this.label2.Text = "2024-08-01(목)";
-			this.label2.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+			this.NowDateLabel.Font = new System.Drawing.Font("배달의민족 주아", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+			this.NowDateLabel.Location = new System.Drawing.Point(12, 9);
+			this.NowDateLabel.Name = "NowDateLabel";
+			this.NowDateLabel.Size = new System.Drawing.Size(971, 14);
+			this.NowDateLabel.TabIndex = 2;
+			this.NowDateLabel.Text = "2024-08-01(목)";
+			this.NowDateLabel.TextAlign = System.Drawing.ContentAlignment.TopCenter;
 			// 
 			// daycontainer
 			// 
@@ -135,10 +139,34 @@ namespace GreatDay
 			this.label8.TabIndex = 10;
 			this.label8.Text = "토";
 			// 
+			// button1
+			// 
+			this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+			this.button1.Font = new System.Drawing.Font("배달의민족 주아", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+			this.button1.Location = new System.Drawing.Point(400, 4);
+			this.button1.Name = "button1";
+			this.button1.Size = new System.Drawing.Size(23, 23);
+			this.button1.TabIndex = 11;
+			this.button1.Text = "<";
+			this.button1.UseVisualStyleBackColor = true;
+			// 
+			// button2
+			// 
+			this.button2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+			this.button2.Font = new System.Drawing.Font("배달의민족 주아", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+			this.button2.Location = new System.Drawing.Point(573, 4);
+			this.button2.Name = "button2";
+			this.button2.Size = new System.Drawing.Size(23, 23);
+			this.button2.TabIndex = 12;
+			this.button2.Text = ">";
+			this.button2.UseVisualStyleBackColor = true;
+			// 
 			// GreatDay
 			// 
 			this.BackColor = System.Drawing.SystemColors.Window;
 			this.ClientSize = new System.Drawing.Size(995, 676);
+			this.Controls.Add(this.button2);
+			this.Controls.Add(this.button1);
 			this.Controls.Add(this.label8);
 			this.Controls.Add(this.label7);
 			this.Controls.Add(this.label6);
@@ -147,7 +175,7 @@ namespace GreatDay
 			this.Controls.Add(this.label3);
 			this.Controls.Add(this.label1);
 			this.Controls.Add(this.daycontainer);
-			this.Controls.Add(this.label2);
+			this.Controls.Add(this.NowDateLabel);
 			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
 			this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
 			this.Name = "GreatDay";
@@ -167,11 +195,15 @@ namespace GreatDay
 		private void Initialize()
 		{
 			DateTime now = DateTime.Now;
-
 			DateTime startMonth = new DateTime(now.Year, now.Month, 1);
+			string nowDayStr = string.Empty;
+			string[] dayOfWeeks = { "일", "월", "화", "수", "목", "금", "토" };
+			nowDayStr = dayOfWeeks[(int)now.DayOfWeek];
+
+			NowDateLabel.Text = $"{now.Year}-{now.Month}-{now.Day}({nowDayStr})";
 			int days = DateTime.DaysInMonth(now.Year, now.Month);
 
-			for (int i = 1; i <= 30; ++i)
+			for (int i = 1; i <= 31; ++i)
 			{
 				DateItem dateItem = new DateItem($"{now.Month.ToString()}/{i}", i==now.Day);
 				daycontainer.Controls.Add(dateItem);
