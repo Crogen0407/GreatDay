@@ -50,19 +50,19 @@ namespace GreatDay
 			this.TodoList.Location = new System.Drawing.Point(-1, 24);
 			this.TodoList.Name = "TodoList";
 			this.TodoList.SelectionMode = System.Windows.Forms.SelectionMode.None;
-			this.TodoList.Size = new System.Drawing.Size(134, 90);
+			this.TodoList.Size = new System.Drawing.Size(134, 72);
 			this.TodoList.TabIndex = 1;
+			this.TodoList.SelectedIndexChanged += new System.EventHandler(this.TodoList_SelectedIndexChanged);
 			// 
 			// DateItem
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.BackColor = System.Drawing.SystemColors.Window;
-			this.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
 			this.Controls.Add(this.TodoList);
 			this.Controls.Add(this.DayLabel);
 			this.Name = "DateItem";
-			this.Size = new System.Drawing.Size(132, 113);
+			this.Size = new System.Drawing.Size(133, 95);
 			this.Load += new System.EventHandler(this.DateItem_Load);
 			this.ResumeLayout(false);
 

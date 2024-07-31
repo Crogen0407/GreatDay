@@ -31,5 +31,10 @@ namespace GreatDay
 		{
 			TodoList.Items.Add(str);
 		}
+
+		private void TodoList_SelectedIndexChanged(object sender, EventArgs e)
+		{
+
+		}
 	}
 }
